@@ -1,6 +1,9 @@
 
-.datatable-editing-demo .editable-cells-table td.p-cell-editing {
+.datatable-editing-demo .editable-cells-table td.p-cell-editing .p-datatable-thead{
     padding-top: 0;
     padding-bottom: 0;
+    ;
 }
-     
+.p-datatable.p-datatable-scrollable > .p-datatable-wrapper > .p-datatable-table > .p-datatable-thead{
+    background-color: blue !important;
+}

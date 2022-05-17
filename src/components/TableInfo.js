@@ -3,6 +3,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
+import './DataTableDemo.css';
 
 const TableInfo = ({ columns, data, handleTableData }) => {
 
@@ -12,32 +13,32 @@ const TableInfo = ({ columns, data, handleTableData }) => {
   const onCustomPage2 = (event) => {
     setFirst2(event.first);
     setRows2(event.rows);
-}
+  }
 
   const template2 = {
     layout: 'RowsPerPageDropdown CurrentPageReport PrevPageLink NextPageLink',
     'RowsPerPageDropdown': (options) => {
-        const dropdownOptions = [
-            { label: 5, value: 5 },
-            { label: 10, value: 10 },
-            { label: 20, value: 20 }
-        ];
+      const dropdownOptions = [
+        { label: 5, value: 5 },
+        { label: 10, value: 10 },
+        { label: 20, value: 20 }
+      ];
 
-        return (
-            <React.Fragment>
-                <span className="mx-1" style={{ color: 'var(--text-color)', userSelect: 'none' }}>Items per page: </span>
-                <Dropdown value={options.value} options={dropdownOptions} onChange={options.onChange} />
-            </React.Fragment>
-        );
+      return (
+        <React.Fragment>
+          <span className="mx-1" style={{ color: 'var(--text-color)', userSelect: 'none' }}>Items per page: </span>
+          <Dropdown value={options.value} options={dropdownOptions} onChange={options.onChange} />
+        </React.Fragment>
+      );
     },
     'CurrentPageReport': (options) => {
-        return (
-            <span style={{ color: 'var(--text-color)', userSelect: 'none', width: '120px', textAlign: 'center' }}>
-                {options.first} - {options.last} of {options.totalRecords}
-            </span>
-        )
+      return (
+        <span style={{ color: 'var(--text-color)', userSelect: 'none', width: '120px', textAlign: 'center' }}>
+          {options.first} - {options.last} of {options.totalRecords}
+        </span>
+      )
     }
-};
+  };
 
   const priceBodyTemplate = (rowData) => {
     return new Intl.NumberFormat("en-US", {
@@ -47,7 +48,7 @@ const TableInfo = ({ columns, data, handleTableData }) => {
   };
 
   const cellEditor = (options) => {
-   return textEditor(options);
+    return textEditor(options);
   };
 
   const onCellEditComplete = (e) => {
@@ -60,39 +61,45 @@ const TableInfo = ({ columns, data, handleTableData }) => {
       <InputText
         type="text"
         value={options.value}
-        onChange={(e) => { console.log(options); options.editorCallback(e.target.value)}}
+        onChange={(e) => { console.log(options); options.editorCallback(e.target.value) }}
       />
     );
   };
 
 
   return (
-    <DataTable
-      value={data}
-      editMode="cell"
-      className="editable-cells-table"
-      responsiveLayout="scroll"
-      scrollable scrollHeight="400px"
-      paginator paginatorTemplate={template2}
-      first={first2}
-      rows={rows2}
-      onPage={onCustomPage2}
-      paginatorClassName="justify-content-end"
-    >
-      {columns.map(({ field, header }) => {
-        return (
-          <Column
-            key={field}
-            field={field}
-            header={header}
-            style={{ width: "25%" }}
-            body={field === "price" && priceBodyTemplate}
-            editor={(options) => cellEditor(options)}
-            onCellEditComplete={onCellEditComplete}
-          />
-        );
-      })}
-    </DataTable>
+    <div>
+      <div className="card">
+        <DataTable
+          value={data}
+          editMode="cell"
+          className="editable-cells-table"
+          style={{border:"1px solid grey"}}
+          // showGridlines
+          responsiveLayout="scroll"
+          scrollable scrollHeight="400px"
+          paginator paginatorTemplate={template2}
+          first={first2}
+          rows={rows2}
+          onPage={onCustomPage2}
+          paginatorClassName="justify-content-end"
+        >
+          {columns.map(({ field, header }) => {
+            return (
+              <Column
+                key={field}
+                field={field}
+                header={header}
+                style={{ width: "25%" }}
+                body={field === "price" && priceBodyTemplate}
+                editor={(options) => cellEditor(options)}
+                onCellEditComplete={onCellEditComplete}
+              />
+            );
+          })}
+        </DataTable>
+      </div>
+    </div>
   );
 };
 

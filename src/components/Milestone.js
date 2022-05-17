@@ -6,6 +6,7 @@ import TableInfo from './TableInfo'
 import { useSelector, useDispatch } from 'react-redux';
 import { loadData } from "../features/tableInfo";
 import { Dropdown } from 'primereact/dropdown';
+import { MultiSelect } from 'primereact/multiselect';
 
 const Milestone = ({ tab, reset }) => {
   const [displayBasic2, setDisplayBasic2] = useState(true);
@@ -79,29 +80,29 @@ const Milestone = ({ tab, reset }) => {
             className="p-button-outlined p-button-info"
           /> */}
           
-          <Dropdown className="test" value={selectedMilestone1} options={milestone1} onChange={onMilestoneChange} variant="outlined info"optionLabel="name" placeholder="SI Milestone" />
- 
+          {/* <Dropdown className="test" value={selectedMilestone1} options={milestone1} onChange={onMilestoneChange} variant="outlined info"optionLabel="name" placeholder="SI Milestone" /> */}
+          <MultiSelect value={selectedMilestone1} options={milestone1} onChange={(e) => setSelectedMilestone1(e.value)} optionLabel="name" placeholder="Select Milestone" maxSelectedLabels={3} />
           
         </div>
         <div class="col-9">
-          <Calendar value={sifrom} onChange={(e) => setSiFrom(e.value)} style={{ 'marginRight':'2em'}} />
-          <Calendar value={sito} onChange={(e) => setSiTo(e.value)}  />
+          <Calendar id="icon"value={sifrom} onChange={(e) => setSiFrom(e.value)} style={{ 'marginRight':'2em'}} showIcon />
+          <Calendar id="icon"value={sito} onChange={(e) => setSiTo(e.value)} showIcon />
         </div>
       </div>
 
-      <div class="grid">
+      {/* <div class="grid">
         <div class="col-3">
-          {/* <Button
+          <Button
             label="PXT Milestone"
             className="p-button-outlined p-button-info"
-          /> */}
+          /> 
           <Dropdown value={selectedMilestone1} options={milestone2} onChange={onMilestoneChange} optionLabel="name" placeholder="PXT Milestone" />
         </div>
         <div class="col-9">
           <Calendar value={pxtfrom} onChange={(e) => setPXTFrom(e.value)} style={{ 'marginRight':'2em'}} />
           <Calendar value={pxtto} onChange={(e) => setPXTTo(e.value)} />
         </div>
-      </div>
+      </div> */}
       <br/>
 
       {/* <TableInfo columns={columns} data={tableInfo} handleTableData={handleTableData} />       */}

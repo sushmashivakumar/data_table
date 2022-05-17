@@ -12,11 +12,13 @@ import { Toast } from 'primereact/toast';
 import { useDispatch } from 'react-redux';
 import { signIn } from '../features/loggedIn'
 import { userData } from '../features/userInfo';
+import { Dropdown } from 'primereact/dropdown';
 
 const Login = () => {
     let navigate = useNavigate();
     const dispatch = useDispatch();
     const [showMessage, setShowMessage] = useState(false)
+    const [selectedMilestone1, setSelectedMilestone1] = useState(null);
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -58,6 +60,18 @@ console.log(userExist)
         return isFormFieldValid(name) && <small className="p-error">{formik.errors[name]}</small>;
     };
 
+    const milestone1 = [
+        { name: 'Project 1' },
+        { name: 'Project 2' },
+        { name: 'Project 3' },
+        { name: 'Project 4'},
+        { name: 'Project 5' },
+        
+    ];
+
+    const onMilestoneChange = (e) => {
+        setSelectedMilestone1(e.target.value);
+    }
       return (
         <div className="ui-grid-col-8">
             {
@@ -87,7 +101,11 @@ console.log(userExist)
                                 {getFormErrorMessage('password')}
                             </div>
 
-                            <Button type="submit" label="Submit" className="mt-2" />
+                           
+
+                    <Dropdown className="test" value={selectedMilestone1} options={milestone1} onChange={onMilestoneChange} variant="outlined info"optionLabel="name" placeholder="Select Project" />
+
+                    <Button type="submit" label="Submit" className="mt-2" />
                         </form>
                     </div>
                 </div>

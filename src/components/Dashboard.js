@@ -32,6 +32,7 @@ const Dashboard = () => {
     { field: "function_owner", header: "Function Owner" },
     { field: "domain", header: "Domain" },
     { field: "status", header: "Feature ON/OFF" },
+    { field: "mode", header: "Mode" },
     { field: "q1", header: "Q1" },
     { field: "q2", header: "Q2" },
     { field: "q3", header: "Q3" },
@@ -74,11 +75,11 @@ const Dashboard = () => {
 
       <div className="card">
         <div className="pt-2">
-        <Button
+        {/* <Button
             onClick={() => setActiveIndex("mode")}
             className="p-button-text"
             label="Mode"
-          />
+          /> */}
           <Button
             onClick={() => setActiveIndex("milestone")}
             className="p-button-text"
@@ -91,6 +92,8 @@ const Dashboard = () => {
             style={{ float: "right" }}
           />
         </div>
+
+
 
       </div>
 

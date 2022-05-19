@@ -6,7 +6,7 @@ import { InputText } from 'primereact/inputtext';
 import { Calendar } from 'primereact/calendar';
 import './DataTableDemo.css';
 
-const TableInfo = ({ columns, data, handleTableData }) => {
+const TableInfo = ({ columns, data, handleTableData, colEdit }) => {
 
   const [first2, setFirst2] = useState(0);
   const [rows2, setRows2] = useState(10);
@@ -96,8 +96,10 @@ const TableInfo = ({ columns, data, handleTableData }) => {
                 header={header}
                 style={{ width: "25%" }}
                 body={field === "price" && priceBodyTemplate}
-                editor={(options) => cellEditor(options)}
-                onCellEditComplete={onCellEditComplete}
+                // editor={(options) => cellEditor(options)}
+                // onCellEditComplete={onCellEditComplete}
+                {...colEdit ? {'editor': (options) => cellEditor(options)} : {}}
+                {...colEdit ? { 'onCellEditComplete' : onCellEditComplete} : {}}
                 
               />
             );

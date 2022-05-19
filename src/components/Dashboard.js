@@ -16,14 +16,15 @@ const Dashboard = () => {
   const toast = useRef(null);
   const navigate = useNavigate()
   const [activeIndex, setActiveIndex] = useState(3);
+  const [columnEdit, setColumnEdit] = useState(false);
   
   const userStore = useSelector(state => state.userInfo);
   const tableInfo = useSelector(state => state.tableInfo);
   const dispatch = useDispatch();
 
-  const UserInfo = () => {
-    return <div> Welcome, Sushma</div>;
-  };
+  // const UserInfo = () => {
+  //   return <div> Welcome, Sushma</div>;
+  // };
 
   const columns = [
     { field: "features", header: "Features" },
@@ -61,6 +62,15 @@ const Dashboard = () => {
 
   }
 
+  const handleColumnEdit = () =>{
+    setColumnEdit(true);
+  }
+
+  const handleCancelEdit = () =>{
+    setColumnEdit(false);
+  }
+
+
   useEffect(() => {
     if(!userStore.hasOwnProperty('useremail')){
       navigate('/');
@@ -71,35 +81,61 @@ const Dashboard = () => {
   return (
     <div className="datatable-editing-demo">
       <Toast ref={toast} />
-      <Menubar end={<UserInfo />} />
+      {/* <Menubar end={<UserInfo />} /> */}
+      
 
       <div className="card">
-        <div className="pt-2">
-        {/* <Button
-            onClick={() => setActiveIndex("mode")}
-            className="p-button-text"
-            label="Mode"
-          /> */}
+        <div className="pt-3">
+        
           <Button
             onClick={() => setActiveIndex("milestone")}
             className="p-button-text"
+            style={{color:"grey"}}
             label="Milestone"
           />
-         
+
+          {columnEdit ? (
+           <Button
+            // label="Cancel"
+            className="p-button-rounded p-button-outlined"
+            icon="pi pi-times"
+            style={{ float: "right",color:"grey" }}
+            onClick={handleCancelEdit}
+          />
+          ): (
           <Button
             label="Edit"
-            className="p-button-outlined p-button-info"
-            style={{ float: "right" }}
+            className="p-button-rounded p-button-outlined"
+            
+            icon="pi pi-user-edit"
+            style={{ float: "right",color:"grey"}}
+            onClick={handleColumnEdit}
           />
+          )}
         </div>
-
-
 
       </div>
 
       <CustomComponent />
 
-      <TableInfo columns={columns} data={tableInfo} handleTableData={handleTableData} />
+      {
+        activeIndex === "milestone" &&(
+          <Milestone
+          tab={activeIndex}
+          reset ={setActiveIndex}
+          colEdit={columnEdit}
+          />
+        )
+        
+      }
+
+      <TableInfo 
+      columns={columns}
+       data={tableInfo}
+       handleTableData={handleTableData}
+       colEdit={columnEdit}
+       
+       />
 
       {/* <DataTablePaginator/> */}
       

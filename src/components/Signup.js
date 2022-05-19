@@ -64,7 +64,7 @@ const Signup = () => {
 
   return (
     <>
-      <Topbar />
+      {/* <Topbar /> */}
       <Dialog
         visible={showMessage}
         onHide={() => setShowMessage(false)}

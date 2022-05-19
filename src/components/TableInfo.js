@@ -3,12 +3,16 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
+import { Calendar } from 'primereact/calendar';
 import './DataTableDemo.css';
 
 const TableInfo = ({ columns, data, handleTableData }) => {
 
   const [first2, setFirst2] = useState(0);
   const [rows2, setRows2] = useState(10);
+  const [dates2, setDates2] = useState(null);
+
+
 
   const onCustomPage2 = (event) => {
     setFirst2(event.first);
@@ -73,7 +77,7 @@ const TableInfo = ({ columns, data, handleTableData }) => {
         <DataTable
           value={data}
           editMode="cell"
-          className="editable-cells-table"
+          className="datatable-editing-demo"
           style={{border:"1px solid grey"}}
           // showGridlines
           responsiveLayout="scroll"
@@ -94,10 +98,15 @@ const TableInfo = ({ columns, data, handleTableData }) => {
                 body={field === "price" && priceBodyTemplate}
                 editor={(options) => cellEditor(options)}
                 onCellEditComplete={onCellEditComplete}
+                
               />
             );
           })}
         </DataTable>
+        <div className="field col-12 md:col-4">
+                        <label htmlFor="range">Range</label>
+                        <Calendar id="range" value={dates2} onChange={(e) => setDates2(e.value)} selectionMode="range" readOnlyInput />
+                    </div>
       </div>
     </div>
   );

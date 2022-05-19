@@ -2,8 +2,16 @@
 .datatable-editing-demo .editable-cells-table td.p-cell-editing .p-datatable-thead{
     padding-top: 0;
     padding-bottom: 0;
-    ;
+    border: 1px solid grey;
+  
+  
 }
-.p-datatable.p-datatable-scrollable > .p-datatable-wrapper > .p-datatable-table > .p-datatable-thead{
-    background-color: blue !important;
+.datatable-editing-demo .p-datatable .p-datatable-thead >tr > th{
+    background-color: #b1bcdb;
+    border-bottom: 1px solid grey;
 }
+/* .tablestyle .p-datatable .p-datatable-thead  tr  th {
+    background: blue !important;
+    border: 1px solid red;
+    
+} */

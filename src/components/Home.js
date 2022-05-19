@@ -37,7 +37,7 @@ function Home() {
   return (
     <div>
       <Topbar />
-      <div className="grid">
+      {/* <div className="grid">
         <div className="col-4 col-offset-4">
           <div style={{ textAlign : "center", marginTop:'3em' }}>
             {projects.map((project,index) => (
@@ -50,7 +50,7 @@ function Home() {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

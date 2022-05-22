@@ -105,7 +105,7 @@ console.log(userExist)
 
                     <Dropdown className="test" value={selectedMilestone1} options={milestone1} onChange={onMilestoneChange} variant="outlined info"optionLabel="name" placeholder="Select Project" />
 
-                    <Button type="submit" label="Submit" className="mt-2" />
+                    <Button type="submit" style={{backgroundColor:"#405685", color:"white"}} label="Submit" className="mt-2" />
                         </form>
                     </div>
                 </div>

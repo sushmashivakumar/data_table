@@ -51,10 +51,16 @@ function Menu({loggedIn}) {
         <>
             <Button
             label="Sign Up"
-            style={{ "marginRight": "10px" }}
+            className="p-button-rounded p-button-outlined"
+            style={{ "marginRight": "10px" , color:"white" }}
             onClick={() => navigate("signup")}
           />
-          <Button label="Login" onClick={() => navigate("login")} />
+          <Button
+           label="Login"
+           className="p-button-rounded p-button-outlined"
+            style={{ "marginRight": "10px" , color:"white"}}
+            onClick={() => navigate("login")}
+            />
       
         </>
       }

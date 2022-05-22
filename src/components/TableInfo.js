@@ -105,10 +105,10 @@ const TableInfo = ({ columns, data, handleTableData, colEdit }) => {
             );
           })}
         </DataTable>
-        <div className="field col-12 md:col-4">
+        {/* <div className="field col-12 md:col-4">
                         <label htmlFor="range">Range</label>
                         <Calendar id="range" value={dates2} onChange={(e) => setDates2(e.value)} selectionMode="range" readOnlyInput />
-                    </div>
+                    </div> */}
       </div>
     </div>
   );

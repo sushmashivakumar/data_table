@@ -4,6 +4,7 @@ import { Toast } from "primereact/toast";
 import { Menubar } from "primereact/menubar";
 import TableInfo from "./TableInfo";
 import Milestone from "./Milestone";
+import { TabMenu } from 'primereact/tabmenu';
 import  DataTablePaginator from "./DataTablePaginator";
 import Mode from "./Mode";
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,10 +22,17 @@ const Dashboard = () => {
   const userStore = useSelector(state => state.userInfo);
   const tableInfo = useSelector(state => state.tableInfo);
   const dispatch = useDispatch();
+  const items = [
+    {label: 'Milestone', icon: 'pi pi-fw pi-flag-fill'},
+    {label: 'Development', icon: 'pi pi-fw pi-slack'},
+    {label: 'Validation', icon: 'pi pi-fw pi-check-circle'},
+    {label: 'Horizontal', icon: 'pi pi-fw pi-arrows-h'},
+    {label: 'Summary', icon: 'pi pi-fw pi-credit-card'}
+];
 
-  // const UserInfo = () => {
-  //   return <div> Welcome, Sushma</div>;
-  // };
+  const UserInfo = () => {
+    return <div> Welcome, Sushma</div>;
+  };
 
   const columns = [
     { field: "features", header: "Features" },
@@ -81,10 +89,21 @@ const Dashboard = () => {
   return (
     <div className="datatable-editing-demo">
       <Toast ref={toast} />
-      {/* <Menubar end={<UserInfo />} /> */}
-      
+      <Menubar end={<UserInfo />} />
+      <div>
+            <div className="card">
+                {/* <h5>Default</h5> */}
+                <TabMenu model={items} onClick={() => setActiveIndex("milestone")}
+                
+                
+                />
+                
+                
+            </div>
 
-      <div className="card">
+        </div>
+
+      {/* <div className="card">
         <div className="pt-3">
         
           <Button
@@ -114,7 +133,8 @@ const Dashboard = () => {
           )}
         </div>
 
-      </div>
+      </div> */}
+      
 
       <CustomComponent />
 
@@ -128,7 +148,25 @@ const Dashboard = () => {
         )
         
       }
-
+<div>
+{columnEdit ? (
+           <Button
+            // label="Cancel"
+            className="p-button-rounded p-button-outlined mb-2"
+            icon="pi pi-times"
+            style={{ color:"grey" }}
+            onClick={handleCancelEdit}
+          />
+          ): (
+          <Button
+            label="Edit"
+            className="p-button-rounded p-button-outlined mb-2"
+            
+            icon="pi pi-user-edit"
+            style={{ color:"grey"}}
+            onClick={handleColumnEdit}
+          />
+          )}
       <TableInfo 
       columns={columns}
        data={tableInfo}
@@ -138,7 +176,7 @@ const Dashboard = () => {
        />
 
       {/* <DataTablePaginator/> */}
-      
+      </div>
     </div>
   );
 };

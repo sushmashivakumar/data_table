@@ -154,7 +154,7 @@ const Signup = () => {
                   {getFormErrorMessage("confirm_password")}
                 </div>
 
-                <Button type="submit" label="Sign Up" className="mt-2" />
+                <Button type="submit" style={{backgroundColor:"#405685", color:"white"}} label="Sign Up" className="mt-2" />
               </form>
             </div>
           </div>

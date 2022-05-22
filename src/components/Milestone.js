@@ -42,7 +42,8 @@ const Milestone = ({ tab, reset }) => {
   const [products, setProducts] = useState([]);
   const [displayBasic2, setDisplayBasic2] = useState(true);
   const productService = new ProductService();
-  const title = tab.charAt(0).toUpperCase() + tab.slice(1);
+//   const title = tab.charAt(0).toUpperCase() + tab.slice(1);
+  const title = "Milestone";
   const onHide = (name) => {
       reset("");
       setDisplayBasic2(false);

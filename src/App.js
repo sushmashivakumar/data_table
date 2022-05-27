@@ -1,5 +1,4 @@
 import React, { useState} from 'react'
-import EditTable from './components/EditTable'
 import './components/DataTableDemo.css';
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
@@ -17,13 +16,15 @@ function App() {
   const logginStatus = useSelector(state => state.loggedIn)
   return (
     <div className="App">
-      <Menu loggedIn={logginStatus}/>
+       <div className='menu'>
+        <Menu loggedIn={logginStatus}/>
+      </div>
+     
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="table" element={<EditTable />} />
       </Routes>
     </div>
   );

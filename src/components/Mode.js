@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
-// import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 
 const Mode = ({ tab, reset }) => {
   const [displayBasic2, setDisplayBasic2] = useState(true);
-  const [selectedCity1, setSelectedCity1] = useState(null);
+  const [selectedMilestone, setSelectedMilestone] = useState(null);
 
-  const onCityChange = (e) => {
-    setSelectedCity1(e.value);
-}
+  const onMilestoneChange = (e) => {
+    setSelectedMilestone(e.value);
+  }
 
-const milestone1 = [
-  { name: 'Low' },
-  { name: 'Medium'},
-  { name: 'Heavy' },
-  
-];
+  const milestone1 = [
+    { name: 'Low' },
+    { name: 'Medium' },
+    { name: 'Heavy' },
+
+  ];
 
   const onHide = (name) => {
     reset("");
@@ -51,12 +50,8 @@ const milestone1 = [
             <label htmlFor="username1" className="block">
               Mode
             </label>
-            <Dropdown value={selectedCity1} options={milestone1} onChange={onCityChange} variant="outlined info"optionLabel="name" placeholder="Select Mode" />
-            {/* <InputText
-              id="username1"
-              aria-describedby="username1-help"
-              className="block"
-            /> */}
+            <Dropdown value={selectedMilestone} options={milestone1} onChange={onMilestoneChange} variant="outlined info" optionLabel="name" placeholder="Select Mode" />
+
           </div>
         </div>
       </div>

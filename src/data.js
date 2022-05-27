@@ -11,3 +11,35 @@ export const Data = [
     {"id": "1009","features": "Automation Framework HC - Windows Server","function": "ADA","feature_owner":"Dinesh","domain":"ADA","description": "Product Description","image": "gaming-set.jpg","status": "ON","mode":"Medium","milestone":"PO","date":"","category": "Electronics","function_owner": "Development","inventoryStatus": "INSTOCK","rating": 3,"estimation_type":"BTI","q1":1, "q2":0.25, "q3":0.5, "q4":1}
 ]
 
+export const SummaryData = [
+    {
+        'id':1,
+        'models':'SW-Development',
+        'medium_modify':'$3,386',
+        'heavy_modify':'$7,159'
+    },
+    {
+        'id':2,
+        'models':'SW-Validation',
+        'medium_modify':'$4,003',
+        'heavy_modify':'$6,247'
+    },
+    {
+        'id':3,
+        'models':'SW-Horizontal',
+        'medium_modify':'$1,737',
+        'heavy_modify':'$2,826'
+    },
+]
+
+export const SummaryColumns = [
+    {
+        field: "models", header: "Models" ,
+    },
+    {
+        field: "medium_modify", header: "Medium Modify" ,
+    },
+    {
+        field: "heavy_modify", header: "Heavy Modify" ,
+    },
+]

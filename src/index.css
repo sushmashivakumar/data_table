@@ -198,4 +198,26 @@ img.flag {
   width:30px
 }
 
+.edit_button{
+  display: flex;
+  justify-content: flex-end; 
+  margin-top: -1%;
+ 
+}
+
+.menu .p-menubar.menunav{
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu .p-menubar.menunav .p-menuitem{
+  
+  background: #fff;
+  border-radius: 16px;
+}
+
+.datatable-templating-demo .p-datatable .p-datatable-tbody > tr > td{
+  padding: 0.3rem 1rem !important;
+}
+
                   

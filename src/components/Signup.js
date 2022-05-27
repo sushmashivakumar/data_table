@@ -6,7 +6,6 @@ import { Password } from "primereact/password";
 import { classNames } from "primereact/utils";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import Topbar from "./Topbar";
 import { Dialog } from "primereact/dialog";
 
 const Signup = () => {
@@ -64,7 +63,7 @@ const Signup = () => {
 
   return (
     <>
-      {/* <Topbar /> */}
+     
       <Dialog
         visible={showMessage}
         onHide={() => setShowMessage(false)}

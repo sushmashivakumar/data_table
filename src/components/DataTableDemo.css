@@ -8,13 +8,19 @@
 }
 .datatable-editing-demo .p-datatable .p-datatable-thead >tr > th{
     background-color: #b1bcdb;
+    color: #405685;
     border-bottom: 1px solid grey;
 }
-/* .tablestyle .p-datatable .p-datatable-thead  tr  th {
-    background: blue !important;
-    border: 1px solid red;
-    
-} */
-.datatable-milestone .p-datatable .p-datatable-thead > tr > td{
-    padding: 20%;
-}
+
+.edit_button{
+    display: flex;
+    justify-content: flex-end; 
+    margin-top: 1rem;
+  }
+  .datatable-templating-demo .p-datatable .p-datatable-thead > tr > th{
+    color:white ;
+    background-color: #405685;
+
+    /* border-bottom: 1px solid grey; */
+  }
+

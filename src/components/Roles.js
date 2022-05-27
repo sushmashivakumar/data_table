@@ -19,6 +19,10 @@ export const Users = [
     role: "project_planner",
   },
   {
+    email: "sushmax.hs@intel.com",
+    role: "project_planner",
+  },
+  {
     email: "user@gmail.com",
     role: "domain_owner",
   },

@@ -3,12 +3,15 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
+import { Calendar } from "primereact/calendar";
 import './DataTableDemo.css';
 
-const TableInfo = ({ columns, data, handleTableData, colEdit }) => {
+const TableInfo = ({ columns, data, handleTableData, colEdit, custHeader = false, customHeader }) => {
 
   const [first2, setFirst2] = useState(0);
   const [rows2, setRows2] = useState(10);
+  const [dates2, setDates2] = useState(null);
+  
   const onCustomPage2 = (event) => {
     setFirst2(event.first);
     setRows2(event.rows);
@@ -82,6 +85,7 @@ const TableInfo = ({ columns, data, handleTableData, colEdit }) => {
           rows={rows2}
           onPage={onCustomPage2}
           paginatorClassName="justify-content-end"
+          {...custHeader ? {headerColumnGroup:customHeader } : {}}
         >
           {columns.map(({ field, header }) => {
             return (

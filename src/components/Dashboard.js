@@ -11,6 +11,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Data, SummaryColumns, SummaryData } from "../data";
 import { loadData } from "../features/tableInfo";
+import {ColumnGroup} from "primereact/columngroup";
+import {Row} from "primereact/row";
+import { Column } from "primereact/column";
 
 const Dashboard = () => {
   const toast = useRef(null);
@@ -98,6 +101,33 @@ const Dashboard = () => {
     setColumnEdit(false);
   };
 
+  let headerGroup = <ColumnGroup>
+  <Row>
+      <Column header="" rowSpan={1} colSpan={7}/>
+      <Column header="SI Milestone" colSpan={3} />
+      <Column header="PO" />
+      <Column header="A1" />
+      <Column header="PRQ" />
+
+
+  </Row>
+  <Row>
+      <Column header=""  rowSpan={1} colSpan={7} />
+      <Column header="SI Milestone" colSpan={3} />
+      <Column header="Alpha" />
+      <Column header="Beta" />
+      <Column header="PV" />
+  </Row>
+  <Row>
+     
+     {
+       columns.map(column => {
+         return <Column header={column.header}/>
+       })
+     }
+  </Row>
+</ColumnGroup>;
+
   useEffect(() => {
     if (!userStore.hasOwnProperty("useremail")) {
       navigate("/");
@@ -148,6 +178,8 @@ const Dashboard = () => {
             data={tableInfo}
             handleTableData={handleTableData}
             colEdit={columnEdit}
+            custHeader={true}
+            customHeader={headerGroup}
           />
         ) : null}
       </div>

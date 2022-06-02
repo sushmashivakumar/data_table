@@ -17,11 +17,7 @@ function Menu({ loggedIn }) {
       label: 'Welcome',
       icon: 'pi pi-fw pi-user',
       items: [
-        {
-          label: 'New',
-          icon: 'pi pi-fw pi-user-plus',
-          value: 'test',
-        },
+      
         {
           label: 'Logout',
           icon: 'pi pi-fw pi-user-minus',

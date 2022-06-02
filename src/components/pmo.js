@@ -4,7 +4,7 @@ import { Column } from "primereact/column";
 import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
 
-function PMO({ columns, data }) {
+function PMO({ columns, data, colEdit, handleTableData }) {
 
     const [first2, setFirst2] = useState(0);
     const [rows2, setRows2] = useState(10);
@@ -17,10 +17,29 @@ function PMO({ columns, data }) {
         { name: 'Heavy Modify' },
 
     ];
+    const cellEditor = (options) => {
+        return textEditor(options);
+      };
+    
+      const onCellEditComplete = (e) => {
+        let { rowData, newValue, field, originalEvent: event } = e;
+        handleTableData(e)
+      };
 
     const onModeChange = (e) => {
         setSelectedMode(e.value);
     }
+
+    const textEditor = (options) => {
+        return (
+          <InputText
+            type="text"
+            value={options.value}
+            onChange={(e) => { console.log(options); options.editorCallback(e.target.value) }}
+          />
+        );
+      };
+    
 
     return (
         <div>
@@ -47,7 +66,8 @@ function PMO({ columns, data }) {
                                 field={field}
                                 header={header}
                                 style={{ width: "25%" }}
-
+                                {...colEdit ? { 'editor': (options) => cellEditor(options) } : {}}
+                                {...colEdit ? { 'onCellEditComplete': onCellEditComplete } : {}}
 
                             />
                         );

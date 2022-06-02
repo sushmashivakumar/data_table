@@ -1,15 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
+import { Dropdown } from 'primereact/dropdown';
 import { Menubar } from "primereact/menubar";
 import TableInfo from "./TableInfo";
 import Milestone from "./Milestone";
+import PMO from "./pmo";
 import Prognos from "./Prognos";
 import { TabMenu } from "primereact/tabmenu";
 import Mode from "./Mode";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Data, SummaryColumns, SummaryData } from "../data";
+import { Data, SummaryColumns, SummaryData, PMOColumns, PMOData } from "../data";
 import { loadData } from "../features/tableInfo";
 import {ColumnGroup} from "primereact/columngroup";
 import {Row} from "primereact/row";
@@ -20,19 +22,27 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(-1);
   const [columnEdit, setColumnEdit] = useState(false);
-
+  const [selectedCity1, setSelectedCity1] = useState(null);
   const userStore = useSelector((state) => state.userInfo);
   const tableInfo = useSelector((state) => state.tableInfo);
   const dispatch = useDispatch();
   const items = [
-    { label: "Summary", icon: "pi pi-fw pi-credit-card" },
-    { label: "Milestone", icon: "pi pi-fw pi-flag-fill" },
+    
+    { label: "PMO", icon: "pi pi-fw pi-flag-fill" },
     { label: "Development", icon: "pi pi-fw pi-slack" },
     { label: "Validation", icon: "pi pi-fw pi-check-circle" },
     { label: "Horizontal", icon: "pi pi-fw pi-arrows-h" },
-    { label: "Prognos", icon: "pi pi-fw pi-sitemap" },
+    { label: "Budget", icon: "pi pi-fw pi-briefcase" },
+    // { label: "Prognos", icon: "pi pi-fw pi-sitemap" },
    
   ];
+  
+  const exports = [
+    { name: '' },
+    { name: 'Export to XLS' },
+    { name: 'Export to XLS with Prognos template'},
+   
+];
 
   // const UserInfo = () => {
   //   return <div> Welcome, Sushma</div>;
@@ -59,7 +69,7 @@ const Dashboard = () => {
     switch (activeIndex) {
       case 0:
         componentRender = (
-          <TableInfo columns={SummaryColumns} data={SummaryData} />
+          <PMO columns={PMOColumns} data={PMOData} colEdit={columnEdit}/>
         );
         break;
       case 1:
@@ -71,9 +81,9 @@ const Dashboard = () => {
           />
         );
         break;
-        case 5:
+        case 4:
           componentRender = (
-            <Prognos/>
+            <TableInfo columns={SummaryColumns} data={SummaryData} />
           );
           break;
       default:
@@ -154,6 +164,19 @@ const Dashboard = () => {
 
       <div>
         <div className="edit_button">
+        {activeIndex !== 0  && activeIndex !== 4 ? (
+        <Dropdown 
+          className="p-button-raised p-button-rounded mb-2 mr-2"
+          style={{ color: "grey", border: "1px solid", borderRadius: "2rem", fontWeight:"700" }}
+          value={selectedCity1}
+          options={exports}
+          // onClick={exportExcel}
+          // onChange={onCityChange}
+          optionLabel="name"
+          placeholder="Export" 
+          colEdit={columnEdit}
+          />
+          ) : null}
           {columnEdit ? (
             <Button
               className="p-button-rounded p-button-outlined mb-2"
@@ -172,7 +195,7 @@ const Dashboard = () => {
           )}
         </div>
         <CustomComponent />
-        {activeIndex !== 0 ? (
+        {activeIndex !== 0 && activeIndex !== 4 ? (
           <TableInfo
             columns={columns}
             data={tableInfo}

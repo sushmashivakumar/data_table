@@ -49,11 +49,11 @@ const Dashboard = () => {
   // };
 
   const columns = [
-    { field: "features", header: "Features" },
-    { field: "feature_owner", header: "Feature Owner" },
-    { field: "function", header: "Function" },
     { field: "function_owner", header: "Function Owner" },
+    { field: "function", header: "Function" },
+    { field: "feature_owner", header: "Feature Owner" },
     { field: "domain", header: "Domain" },
+    { field: "features", header: "Features" },
     { field: "status", header: "Feature ON/OFF" },
     { field: "mode", header: "Feature Mode" },
     { field: "q1", header: "Q1" },

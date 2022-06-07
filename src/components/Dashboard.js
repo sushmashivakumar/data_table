@@ -20,7 +20,7 @@ import { Column } from "primereact/column";
 const Dashboard = () => {
   const toast = useRef(null);
   const navigate = useNavigate();
-  const [activeIndex, setActiveIndex] = useState(-1);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [columnEdit, setColumnEdit] = useState(false);
   const [selectedCity1, setSelectedCity1] = useState(null);
   const userStore = useSelector((state) => state.userInfo);
@@ -72,15 +72,15 @@ const Dashboard = () => {
           <PMO columns={PMOColumns} data={PMOData} colEdit={columnEdit}/>
         );
         break;
-      case 1:
-        componentRender = (
-          <Milestone
-            tab={activeIndex}
-            reset={setActiveIndex}
-            colEdit={columnEdit}
-          />
-        );
-        break;
+      // case 1:
+      //   componentRender = (
+      //     <Milestone
+      //       tab={activeIndex}
+      //       reset={setActiveIndex}
+      //       colEdit={columnEdit}
+      //     />
+      //   );
+      //   break;
         case 4:
           componentRender = (
             <TableInfo columns={SummaryColumns} data={SummaryData} />
